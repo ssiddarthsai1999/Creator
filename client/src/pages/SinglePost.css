@@ -1,0 +1,52 @@
+.containersingle{
+    width: 800px;
+    margin: 40px auto;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+background-color: rgb(250, 250, 250);
+}
+.fromanddonate img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.downarrow i{
+    font-size: 30px;
+    padding: 20px;
+margin-left: 5px;
+align-items: center;
+
+
+}
+.froms{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.answersection{
+
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 20px;
+
+}
+.answer textarea{
+    height: 160px;
+resize: none;
+        background-color: #efefef;
+        outline: none;
+        
+
+
+      
+   
+}
+.answersubmit{
+     background-color: #3E4857;
+     transition: 0.2s ease;
+}

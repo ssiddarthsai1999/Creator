@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.normaltext{
+  color: #E2E2E2;
+}
+
+
+
+.normalbg {
+  background-color: #DAD4DE;
+  color: #E2E2E2;
+}
+
+
+body {
+  background-color: #f3f3f3;
+  color: #E2E2E2;
+}
+.iconlogo{
+  display: flex;
+  width: auto;
+}
+.lds-rolle{
+  color: black;
+  background-color: black;
+}
+.ask{
+  border-radius: 3px;
+      background-color: #3E4857;
+        width: 200px;
+}
+.ask:hover{
+  background-color: black;
+
+}
