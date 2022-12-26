@@ -1,4 +1,5 @@
 import express from "express";
+//adawd
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import morgan from "morgan";
@@ -6,6 +7,7 @@ import cors from "cors";
 import userRoute from "./routes/userRoute.js";
 import authRoute from "./routes/authRoute.js";
 import postRoute from "./routes/postRoute.js";
+import StripeRoute from "./routes/StripeRoute.js";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -35,5 +37,7 @@ mongoose
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.use("/post", postRoute);
+app.use("/payment", StripeRoute);
 
-//adawdawd
+
+// new

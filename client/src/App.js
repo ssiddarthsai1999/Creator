@@ -31,7 +31,7 @@ import SinglePost from './pages/SinglePost';
           <ToastContainer />
           <Routes>
               <Route element={<Home />} path="/"></Route>
-              <Route element={<Test />} path="/test/:id"></Route>
+              <Route element={<Test />} path="/test"></Route>
               <Route element={<Register />} path="/register"></Route>
               <Route element={<Login />} path="/login"></Route>
               <Route element={<Profile />} path="/profile"></Route>

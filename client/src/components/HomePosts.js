@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Fragment } from "react";
+import axios from "axios";
 import Test from "./Test";
 import { Menu, Transition } from "@headlessui/react";
+import StripeCheckout from "react-stripe-checkout"
 import {
     CodeBracketIcon,
     EllipsisVerticalIcon,
@@ -25,13 +27,35 @@ function HomePosts() {
 
     const { post, userpost } = useSelector((state) => ({ ...state.post }));
     const userId = user?._id;
+    const publishableKey =
+        "pk_test_51M8mZfSGFRjxmWzPtwpCuA3MKScLeFi8NlSsx2HNrElb8ttw8FiqUEcxfI1OASdEi1Tjck5DcQ4ESKRZ3QB7CA5a00cFXDIajY";
     const dispatch = useDispatch();
+    const [stripeToken, setstripeToken] = useState(null);
+
+   async function onToken(token) {
+   try {
+    const response= await axios({
+        url:"http://localhost:5000/payment/payment",
+        method:"post",
+        data:{
+            amount: 10*100,
+            token,
+        },
+   
+    })
+         if(response.status===200){
+            console.log("Payment is successful")
+        }
+   } catch (error) {
+    console.log(error)
+   }
+
+    }
 
     function likePost(postid) {
-
-
         dispatch(likePosts({ postid, userId }));
     }
+
     function getPost() {
         dispatch(getPosts());
     }
@@ -94,9 +118,17 @@ function HomePosts() {
                             <div className="flex flex-col  ">
                                 {" "}
                                 <h3 className="ml-4">$300</h3>
-                                <button className=" mt-2 flex  justify-center donate border border-transparent bg-[#1aba3d] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-black focus:ring-indigo-500 focus:ring-offset-2   ">
-                                    Donate
-                                </button>
+                                <StripeCheckout
+                                    className=" stripebutton  mt-2 flex  justify-center donate border border-transparent bg-[#1aba3d] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-black focus:ring-indigo-500 focus:ring-offset-2   "
+                                    name="Shop"
+                                    label="Donate"
+                                    billingAddress
+                                    shippingAddress
+                                    description={"Your total is 1$"}
+                                    amount={1 * 100}
+                                    token={onToken}
+                                    stripeKey={publishableKey}
+                                />
                             </div>
                         </div>
                     </div>
